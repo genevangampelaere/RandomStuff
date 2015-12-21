@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<title>Angular demo (HADES)</title>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script language="javascript">
+
+ 
+		 var wieiswieApp = angular.module('wieiswieApp', []);
+
+		wieiswieApp.controller('wieiswieController', function ($scope, $http) {
+		  $scope.dataLoaded=false;
+		  var url = "https://hades.howest.be/api/api/Resources/GetKernteamMembers?kernteamUCODE=ICTL1";
+		  $http.get(url)
+		  .success(function(data,status,headers,config){
+			//console.log(data);
+			$scope.wieiswie=data;
+			$scope.dataLoaded=true;
+		  })
+		  .error(function(data, status, headers, config){
+			//console.log(data);
+		  });
+		  
+		  
+		});
+ 
+
+
+
+</script>
+
+
+</head>
+
+<body>
+
+
+<div id="wieiswie_container" ng-app="wieiswieApp">
+	<div ng-controller="wieiswieController">
+	
+	    <ul class="wieiswieListContainer" ng-show="dataLoaded">
+        <li ng-repeat="member in wieiswie.members">
+          <a href="mailto:{{member.email}}">{{member.name}}  {{member.firstName}}</a> ({{member.teamRole}})
+          
+        </li>
+      </ul>
+
+	
+	</div>
+</div>
+
+
+</body>
+
+</html>
