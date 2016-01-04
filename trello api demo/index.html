@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+		<link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://api.trello.com/1/client.js?key=7b160aae0a5eadf3d9d26432fd6cd1df"></script>
+		<script src="scripts/jquery.Dropdown.js"></script>
+        
+        <script src="scripts/trelloapi.js"></script>
+        
+		
+		<script language="javascript">
+			
+			$(document).ready(function(){
+				$("#btnAuthenticate").click(ConnectToTrello);
+				$("#TrelloBoardsPanel").hide();
+				$("#TrelloListsPanel").hide();
+				$("#TrelloCardsPanel").hide();
+				$("#trelloBoards").change(GetTrelloLists);
+				$("#trelloLists").change(GetTrelloCards);
+				
+			});
+			
+			
+			
+			
+			
+		</script>
+		
+  <style>
+	  .spums-Dropdown{
+		
+		border: 1px solid #111;
+		background: transparent;
+		width: 250px;
+		padding: 5px;
+		font-size: 16px;
+		border: 1px solid #ccc;
+		height: 34px;
+	  }
+  </style>
+
+		
+	</head>
+	<BODY>
+		
+		
+
+		
+		
+		<div class="ms-Grid"> 
+			
+			<div class="ms-Grid-row">
+						<div class="ms-font-su">
+			Trello Outlook Connector
+		</div>
+			</div>
+			
+		<div class="ms-Grid-row" id="TrelloAuthenticationPanel">
+    		<div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+				
+						<button id="btnAuthenticate" class="ms-Button ms-Button--compound">
+			<span class="ms-Button-icon">
+				<i class="ms-Icon ms-Icon--plus"></i>
+			</span> 
+			<span class="ms-Button-label">Link your Trello account</span> 
+			<span class="ms-Button-description">To start you need to link your Trello account with Outlook.</span>
+		</button>
+				
+			</div>
+    		
+ 		</div>
+
+		<div class="ms-Grid-row" id="TrelloBoardsPanel">
+			<div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+				<div class="ms-font-xxl">Your boards</div>
+				
+				<!--<div tabindex="0" class="ms-Dropdown" id="trelloBoardsDropdown">
+				<i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i><select class="ms-Dropdown-select" id="trelloBoards"></select>
+				</div>-->
+				<select class="spums-Dropdown" id="trelloBoards"></select>
+			</div>
+			
+		</div>
+		<div class="ms-Grid-row" id="TrelloListsPanel">
+			<div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+				<div class="ms-font-xxl">Your lists</div>
+				
+				<!--<div tabindex="1" class="ms-Dropdown" id="trelloListsDropdown">
+				<i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i><select class="ms-Dropdown-select" id="trelloLists"></select>
+				</div>-->
+				<select class="spums-Dropdown" id="trelloLists"></select>
+			</div>
+			
+		</div>
+ 
+		<div class="ms-Grid-row" id="TrelloCardsPanel">
+				<div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+					
+					<div class="ms-font-xxl">Your cards</div>
+					
+				<div id="trelloCards">
+					
+				
+					</div>			
+				
+				
+					</div>
+
+					
+					
+				</div>
+		</div>
+		
+		
+	</BODY>
+	
+</html>
